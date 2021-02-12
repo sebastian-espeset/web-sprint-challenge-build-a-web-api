@@ -40,4 +40,12 @@ router.delete('/:id',validateProjectId,(req,res)=>{
             res.status(500).json({message:`server error:${error}`})
         })
 })
+router.get('/:id/actions', validateProjectId,(req,res)=>{
+    Projects.getProjectActions(req.project.id)
+        .then((actions)=>{
+            res.status(200).json(actions)
+        }) .catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+})
 module.exports=router;
