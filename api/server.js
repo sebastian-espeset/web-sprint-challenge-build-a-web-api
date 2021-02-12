@@ -7,7 +7,10 @@ const server = express();
 //add actions routes
 server.use(express.json());
 const actionsRouter = require('./actions/actions-router');
-server.use(`/api/actions`,actionsRouter);
+const projectsRouter = require('./projects/projects-router');
+
+server.use("/api/actions",actionsRouter);
+server.use("/api/projects",projectsRouter);
 
 //engage express with json
 server.get('/',(req,res)=>{
