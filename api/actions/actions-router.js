@@ -22,4 +22,12 @@ router.post('/',validateActionBody,(req,res)=>{
             res.status(500).json({message:`${error}`})
         })
 })
+router.put('/:id',validateActionId,(req,res)=>{
+    Actions.update(req.params.id, req.body)
+        .then((action)=>{
+            res.status(200).json(action)
+        }).catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+})
 module.exports = router;
