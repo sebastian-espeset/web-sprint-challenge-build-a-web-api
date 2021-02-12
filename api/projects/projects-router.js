@@ -32,4 +32,12 @@ router.put('/:id',validateProjectId,(req,res)=>{
             res.status(500).json({message:`server error:${error}`})
         })
 })
+router.delete('/:id',validateProjectId,(req,res)=>{
+    Projects.remove(req.project.id)
+        .then((response)=>{
+            res.status(200).json({message:`Project ${req.project.id}, deleted`})
+        }) .catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+})
 module.exports=router;
