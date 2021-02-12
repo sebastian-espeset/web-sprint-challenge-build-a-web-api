@@ -24,4 +24,12 @@ router.post('/',validateProjectBody,(req,res)=>{
             res.status(500).json({message:`server error:${error}`})
         })
 } )
+router.put('/:id',validateProjectId,(req,res)=>{
+    Projects.update(req.project.id, req.body)
+        .then((project)=>{
+            res.status(200).json(req.body)
+        }).catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+})
 module.exports=router;
