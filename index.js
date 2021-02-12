@@ -12,3 +12,10 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Go code!
 */
+//import the server, define the port, spin it up!
+const server = require('./api/server');
+const port = 3333;
+
+server.listen(port,()=>{
+    console.log(`server listening at port:${port}`)
+});
