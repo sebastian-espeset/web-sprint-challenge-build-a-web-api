@@ -30,4 +30,12 @@ router.put('/:id',validateActionId,(req,res)=>{
             res.status(500).json({message:`server error:${error}`})
         })
 })
+router.delete('/:id',validateActionId,(req,res)=>{
+    Actions.remove(req.params.id)
+        .then((action)=>{
+            res.status(200).json({message:`Action, ${action}, successfully removed`})
+        }).catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+})
 module.exports = router;
