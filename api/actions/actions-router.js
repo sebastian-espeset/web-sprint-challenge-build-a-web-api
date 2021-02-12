@@ -18,16 +18,12 @@ router.post('/',validateActionBody,(req,res)=>{
     Actions.insert(req.body)
         .then(action=>{
             res.status(200).json(req.body)
-        }).catch(error=>{
-            res.status(500).json({message:`${error}`})
         })
 })
 router.put('/:id',validateActionId,(req,res)=>{
     Actions.update(req.params.id, req.body)
         .then((action)=>{
             res.status(200).json(action)
-        }).catch((error)=>{
-            res.status(500).json({message:`server error:${error}`})
         })
 })
 router.delete('/:id',validateActionId,(req,res)=>{

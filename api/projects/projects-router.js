@@ -19,17 +19,13 @@ router.get('/:id',validateProjectId,(req,res)=>{
 router.post('/',validateProjectBody,(req,res)=>{
     Projects.insert(req.body)
         .then((project)=>{
-            res.status(200).json(project)
-        }).catch((error)=>{
-            res.status(500).json({message:`server error:${error}`})
+            res.status(200).json(req.body)
         })
 } )
 router.put('/:id',validateProjectId,(req,res)=>{
     Projects.update(req.project.id, req.body)
         .then((project)=>{
             res.status(200).json(req.body)
-        }).catch((error)=>{
-            res.status(500).json({message:`server error:${error}`})
         })
 })
 router.delete('/:id',validateProjectId,(req,res)=>{
