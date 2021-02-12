@@ -3,7 +3,7 @@ const express = require("express");
 const Projects = require("./projects-model");
 const router = express.Router();
 
-const { validateProjectId } = require('../middlewares/middlewares')
+const { validateProjectId, validateProjectBody } = require('../middlewares/middlewares')
 
 router.get('/',(req,res)=>{
     Projects.get()
@@ -16,4 +16,12 @@ router.get('/',(req,res)=>{
 router.get('/:id',validateProjectId,(req,res)=>{
     res.status(200).json(req.project);
 })
+router.post('/',validateProjectBody,(req,res)=>{
+    Projects.insert(req.body)
+        .then((project)=>{
+            res.status(200).json(project)
+        }).catch((error)=>{
+            res.status(500).json({message:`server error:${error}`})
+        })
+} )
 module.exports=router;

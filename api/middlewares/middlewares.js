@@ -32,7 +32,13 @@ const validateProjectId = async (req, res, next)=>{
 
 const validateActionBody = (req, res, next) =>{
     if(!req.body){
-       res.status(400).json({message:`Error, please add project id`})
+       res.status(400).json({message:`Error, please add all parameter`})
+    } else{
+    next()};
+}
+const validateProjectBody = (req, res, next) =>{
+    if(!req.body){
+       res.status(400).json({message:`Error, please add all parameters`})
     } else{
     next()};
 }
@@ -41,5 +47,6 @@ const validateActionBody = (req, res, next) =>{
 module.exports ={
     validateActionId,
     validateActionBody,
-    validateProjectId
+    validateProjectId,
+    validateProjectBody
 }
